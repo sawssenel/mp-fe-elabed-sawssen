@@ -1,0 +1,45 @@
+<div class="container">
+    <h1>Ajouter une catégorie</h1>
+    <form (ngSubmit)="ajouterCategorie()" #categorieForm="ngForm">
+        <table>
+            <tr>
+                <td><label for="code">Code:</label></td>
+                <td><input type="text" class="form-control" id="code" name="code" [(ngModel)]="nouvelleCategorie.code" required></td>
+            </tr>
+            <tr>
+                <td><label for="libelle">Libellé:</label></td>
+                <td><input type="text" class="form-control" id="libelle" name="libelle" [(ngModel)]="nouvelleCategorie.libelle" required></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit" class="btn btn-dark">Ajouter</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <h1>Liste des catégories</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Libellé</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let categorie of categories">
+                <td>{{ categorie.code}}</td>
+                <td>{{ categorie.libelle}}</td>
+                <td>
+                    <button (click)="modifierCategorie(categorie)" class="btn btn-dark">
+        <i class="bi bi-pencil"></i> Modifier
+        </button> &nbsp;
+                    <button (click)="supprimerCategorie(categorie.id)" class="btn btn-danger">
+        <i class="bi bi-trash"></i> Supprimer
+        </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
